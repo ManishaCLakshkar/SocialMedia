@@ -6,11 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-	
-	
 	 WebDriver driver=null;
-		
-		
 		@FindBy(xpath="//input[@name='username']")
 		private WebElement  username;
 		
@@ -37,7 +33,8 @@ public class LoginPage {
 
 
 		public void login(String user,String pass) throws InterruptedException {
-			 username.sendKeys(user);
+			Thread.sleep(4000);
+			username.sendKeys(user);
 			 password.sendKeys(pass);
 			 Thread.sleep(4000);
 			 LoginButton.click();

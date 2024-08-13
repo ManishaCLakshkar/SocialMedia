@@ -15,6 +15,13 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(xpath = "//div[@class=\"x1iyjqo2 xh8yej3\"]/descendant::span[text()='Messages']")
+	private WebElement messageEdt;
+	
+	public WebElement getMessageEdt() {
+		return messageEdt;
+	}
+
 	@FindBy(xpath="//span[text()='More']")
 	private WebElement morelink;
 	

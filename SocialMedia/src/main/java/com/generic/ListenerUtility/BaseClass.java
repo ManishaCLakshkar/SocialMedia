@@ -17,22 +17,25 @@ import org.testng.annotations.BeforeSuite;
 
 import com.generic.FileUtiity.PropertyFile;
 import com.generic.WebUtility.ObjectUtility;
+import com.generic.WebUtility.WebDriverUtility;
 import com.generic.ObjectRepository.*;
 
 
 public class BaseClass {
 	
-	
-	PropertyFile p=new PropertyFile();
 	public WebDriver driver=null;
 	static  WebDriver  sdriver;
 	public HomePage h;
 	public SerachPage se;
+	//public LoginPage lp = new LoginPage(driver);
+	public PropertyFile p = new PropertyFile();
+	
+	
 	
 	@BeforeClass()
 	public void confiBC() throws Throwable
 	{
-		System.out.println("lancu browser");
+		System.out.println("launch browser");
 		String Browser=p.getDataProperty("browser");
 		//String Browser=browser;
 		
@@ -65,24 +68,22 @@ public class BaseClass {
 		System.out.println("login ===");
 		
 		 String Url=p.getDataProperty("url");
-			String Username=p.getDataProperty("username");
+			String Username=p.getDataProperty("username1");
 			String Password=p.getDataProperty("password");
 			LoginPage l=new LoginPage(driver);
 			driver.get(Url);
 			driver.manage().window().maximize();
 		    l.login(Username, Password);
-		    h=new HomePage(sdriver);
-		    se=new SerachPage(sdriver);
+		   // l.getLoginButton().click();
+//		    h=new HomePage(sdriver);
+//		    se=new SerachPage(sdriver);
 	}
 	
 
 	@AfterMethod
 	public void configAm()
-	{
-		
-		
-	h.logout();
-	
+	{	
+	//h.logout();
 	}
 	
 	//@Parameters("BROWSER")
@@ -91,7 +92,7 @@ public class BaseClass {
 	public void configAC()
 	{
 		System.out.println("close browser");
-		driver.close();
+	//	driver.close();
 	}
 
    @BeforeSuite()
